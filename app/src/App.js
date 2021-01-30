@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header'
 import Form from './components/Form'
+import Clime from './components/Clime'
+import Error from './components/Error'
 
 function App() {
 
@@ -13,6 +15,10 @@ function App() {
 
   const [consult, setConsult] = useState(false)
 
+  const [result, setResult] = useState({})
+
+  const [error, setError] = useState(false)
+
   useEffect(() => {
 
     const consultApi = async () => {
@@ -24,15 +30,19 @@ function App() {
         const response = await fetch(url)
         const result = await response.json()
 
-        console.log(result)
+        setResult(result)
 
         setConsult(false)
+
+        result.cod === '404' ? setError(true) : setError(false)
       }
     }
 
     consultApi()
 
   }, [consult])
+
+  let component = error ? <Error message='No results' /> : <Clime result={result} />
 
   return (
     <>
@@ -51,7 +61,7 @@ function App() {
               />
             </div>
             <div className='col m6 s12'>
-              2
+              {component}
             </div>
           </div>
         </div>

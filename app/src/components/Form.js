@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Error from './Error'
 
 const Form = ({ search, setSearch, setConsult }) => {
 
@@ -31,7 +32,7 @@ const Form = ({ search, setSearch, setConsult }) => {
         <form
             onSubmit={handleSubmit}
         >
-            {error && <p className='red darken-4 error'>Incompleted field</p>}
+            {error && <Error message='Incompleted field' />}
 
             <div className='input-field col s12'>
                 <select
