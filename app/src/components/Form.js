@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Error from './Error'
 import PropTypes from 'prop-types';
 
-const Form = ({ search, setSearch, setConsult }) => {
+const Form = ({ search, setSearch, setConsult, setNoResultsError, setResult }) => {
 
     const { country, city } = search
 
@@ -18,14 +18,19 @@ const Form = ({ search, setSearch, setConsult }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const resetClime = () => {
+            setResult({})
+            setNoResultsError(false)
+        }
+
         if (country.trim() === "" || city.trim() === "") {
+            resetClime()
             setError(true)
             return
         }
 
         setError(false)
         setConsult(true)
-
     }
 
     return (
@@ -78,7 +83,9 @@ const Form = ({ search, setSearch, setConsult }) => {
 Form.propTypes = {
     search: PropTypes.object.isRequired,
     setSearch: PropTypes.func.isRequired,
-    setConsult: PropTypes.func.isRequired
+    setConsult: PropTypes.func.isRequired,
+    setNoResultsError: PropTypes.func.isRequired,
+    setResult: PropTypes.func.isRequired
 }
 
 export default Form;

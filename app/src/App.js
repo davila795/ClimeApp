@@ -58,6 +58,8 @@ function App() {
                 search={search}
                 setSearch={setSearch}
                 setConsult={setConsult}
+                setNoResultsError={setError}
+                setResult={setResult}
               />
             </div>
             <div className='col m6 s12'>
