@@ -39,10 +39,10 @@ function App() {
     }
 
     consultApi()
-
+    // eslint-disable-next-line
   }, [consult])
 
-  let component = error ? <Error message='No results' /> : <Clime result={result} />
+  let component = error ? <Error message='No results' /> : <Clime result={result} />  //  Component contitional load
 
   return (
     <>

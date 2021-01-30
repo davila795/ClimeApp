@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Clime = ({ result }) => {
 
     const { name, main } = result
@@ -25,6 +27,10 @@ const Clime = ({ result }) => {
             </div>
         </div>
     );
+}
+
+Clime.propTypes = {
+    result: PropTypes.object.isRequired
 }
 
 export default Clime;
