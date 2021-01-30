@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 
-const Form = () => {
+const Form = ({ search, setSearch, setConsult }) => {
 
-    const [search, setSearch] = useState({
-        country: '',
-        city: ''
-    })
 
     const { country, city } = search
 
@@ -27,6 +23,8 @@ const Form = () => {
         }
 
         setError(false)
+        setConsult(true)
+
     }
 
     return (
